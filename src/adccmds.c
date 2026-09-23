@@ -103,11 +103,11 @@ DECL_COMMAND(command_query_analog_in,
              " min_value=%hu max_value=%hu range_check_count=%c");
 
 void
+#if CONFIG_WANT_TRIGGER_ANALOG
 command_analog_in_attach_trigger_analog(uint32_t *args) {
     struct analog_in *a = oid_lookup(args[0], command_config_analog_in);
     a->ta = trigger_analog_oid_lookup(args[1]);
 }
-#if CONFIG_WANT_TRIGGER_ANALOG
 DECL_COMMAND(command_analog_in_attach_trigger_analog,
     "analog_in_attach_trigger_analog oid=%c trigger_analog_oid=%c");
 #endif
